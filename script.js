@@ -23,20 +23,40 @@ const ui = {
         ]
     },
 
-    interact(type) {
+    // Sprezzatura + Integrità: simulación de carga honesta
+    async interact(type) {
         const out = document.getElementById('output');
-        let list = this.phrases[type];
         if (type === 'hablar') {
             window.location.href = "https://t.me/ItsukiNakanoUserBot";
             return;
         }
+        
+        // Estado de carga
+        out.style.opacity = 0.7;
+        out.innerText = "⟐ PROCESANDO " + type.toUpperCase() + "... ⟐\n└─ Consultando fuentes del Digesto...";
+        
+        // Simular latencia de red (honestidad: no es instantáneo)
+        await new Promise(r => setTimeout(r, 400));
+        
+        let list = this.phrases[type];
         if (!list) list = this.phrases.dictamen;
         const randomPhrase = list[Math.floor(Math.random() * list.length)];
-        out.style.opacity = 0;
-        setTimeout(() => {
-            out.innerText = randomPhrase;
-            out.style.opacity = 1;
-        }, 150);
+        
+        // Efecto de escritura natural (Sprezzatura)
+        out.style.opacity = 1;
+        this.typeEffect(out, randomPhrase);
+    },
+    
+    typeEffect(element, text, index = 0) {
+        element.innerText = "";
+        const interval = setInterval(() => {
+            if (index < text.length) {
+                element.innerText += text[index];
+                index++;
+            } else {
+                clearInterval(interval);
+            }
+        }, 15); // velocidad agradable
     },
 
     easterEggAvatar() {
@@ -50,32 +70,44 @@ const ui = {
         const randomEgg = eggs[Math.floor(Math.random() * eggs.length)];
         out.style.opacity = 0;
         setTimeout(() => {
-            out.innerText = `🥚 EASTER EGG DETECTADO → ${randomEgg}`;
             out.style.opacity = 1;
+            this.typeEffect(out, `🥚 EASTER EGG DETECTADO → ${randomEgg}`);
         }, 100);
     }
 };
 
+// DOM ready
 document.addEventListener('DOMContentLoaded', () => {
+    // Menú toggle (overlay sin ruptura)
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
     if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
             navMenu.classList.toggle('open');
+        });
+        // Cerrar menú al hacer clic fuera (opcional)
+        document.addEventListener('click', (e) => {
+            if (navMenu.classList.contains('open') && !navMenu.contains(e.target) && e.target !== menuToggle) {
+                navMenu.classList.remove('open');
+            }
         });
     }
 
+    // Botones con acción
     const buttons = document.querySelectorAll('[data-action]');
     buttons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
+        btn.addEventListener('click', async (e) => {
             const action = btn.getAttribute('data-action');
-            ui.interact(action);
+            await ui.interact(action);
         });
     });
 
+    // Avatar easter egg
     const avatarBtn = document.getElementById('easterAvatar');
     if (avatarBtn) avatarBtn.addEventListener('click', () => ui.easterEggAvatar());
 
+    // Fade in inicial
     const container = document.querySelector('.app-container');
     if (container) {
         container.style.opacity = 0;
