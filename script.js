@@ -29,18 +29,33 @@ const ui = {
             window.location.href = "https://t.me/ItsukiNakanoUserBot";
             return;
         }
+
         // Estado de carga honesto
         out.style.opacity = 0.7;
         out.innerText = `⟐ PROCESANDO ${type.toUpperCase()}... ⟐\n└─ Consultando fuentes del Digesto...`;
-        await new Promise(r => setTimeout(r, 450));
         
+        // Animación del LED (Sprezzatura Técnica)
+        const led = document.querySelector('.status-led');
+        if(led) {
+            led.style.background = '#ffeb3b'; // Amarillo proceso
+            led.style.boxShadow = '0 0 10px #ffeb3b';
+        }
+
+        await new Promise(r => setTimeout(r, 450));
+
+        // Volver LED a verde
+        if(led) {
+            led.style.background = '#0f0'; 
+            led.style.boxShadow = '0 0 6px #0f0';
+        }
+
         let list = this.phrases[type];
         if (!list) list = this.phrases.dictamen;
         const randomPhrase = list[Math.floor(Math.random() * list.length)];
         out.style.opacity = 1;
         this.typeEffect(out, randomPhrase);
     },
-    
+
     typeEffect(element, text, index = 0) {
         element.innerText = "";
         const interval = setInterval(() => {
@@ -71,15 +86,14 @@ const ui = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Menú hamburguesa interno (no rompe layout)
+    // Menú hamburguesa interno
     const menuToggle = document.getElementById('menuToggle');
     const buttonsRow = document.getElementById('buttonsRow');
-    if (menuToggle) {
+    if (menuToggle && buttonsRow) {
         menuToggle.addEventListener('click', (e) => {
             e.stopPropagation();
             buttonsRow.classList.toggle('open');
         });
-        // Cerrar al hacer clic fuera
         document.addEventListener('click', (e) => {
             if (buttonsRow.classList.contains('open') && !buttonsRow.contains(e.target) && e.target !== menuToggle) {
                 buttonsRow.classList.remove('open');
@@ -110,3 +124,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 80);
     }
 });
+

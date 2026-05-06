@@ -6,16 +6,16 @@
     --dark-bg: #0f0c0e;
     --glass-bg: rgba(15, 12, 14, 0.65);
     --gold-glow: rgba(255, 215, 0, 0.3);
-    
+
     /* Proporción áurea (1.618) */
     --phi: 1.618;
-    --space-xs: calc(0.382rem);  /* φ⁻² */
-    --space-sm: calc(0.618rem);  /* φ⁻¹ */
+    --space-xs: calc(0.382rem);
+    --space-sm: calc(0.618rem);
     --space-md: 1rem;
     --space-lg: calc(1.618rem);
     --space-xl: calc(2.618rem);
     --space-xxl: calc(4.236rem);
-    
+
     --font-serif: 'Playfair Display', Georgia, serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
@@ -36,14 +36,14 @@ body {
     padding: var(--space-md);
 }
 
-/* Fondo con imagen (Page-img-zmj6P.jpg) */
+/* Fondo con imagen */
 .dual-bg {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('Page-img-zmj6P.jpg');
+    background-image: url('Page-img-zmj6P.jpg'); /* Asegúrate de que esta imagen exista en la carpeta */
     background-size: cover;
     background-position: center center;
     z-index: -2;
@@ -67,6 +67,7 @@ body {
     border: 1px solid rgba(255,255,230,0.2);
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     transition: all 0.3s ease;
+    animation: subtle-float 5s ease-in-out infinite;
 }
 
 /* Header con avatar y título */
@@ -100,6 +101,7 @@ body {
     border-radius: 50%;
     box-shadow: 0 0 6px #0f0;
     border: 1px solid white;
+    transition: all 0.3s ease;
 }
 .serif-title {
     font-family: var(--font-serif);
@@ -121,7 +123,7 @@ body {
     padding-top: var(--space-xs);
 }
 
-/* Panel de botones con hamburguesa responsiva */
+/* Panel de botones */
 .button-panel {
     position: relative;
     margin-bottom: var(--space-lg);
@@ -167,7 +169,7 @@ body {
 .dark { background: #2b1e24; }
 .spqr { background: #b8860b; border-left: 2px solid gold; }
 
-/* Ledger Box - estilo terminal con bordes de caja */
+/* Ledger Box */
 .ledger-box {
     background: rgba(0,0,0,0.5);
     border-radius: var(--space-sm);
@@ -239,7 +241,7 @@ body {
     font-family: var(--font-mono);
 }
 
-/* Responsive: menú hamburguesa interno */
+/* Responsive */
 @media (max-width: 620px) {
     .kawaii-container {
         padding: var(--space-md);
@@ -271,12 +273,10 @@ body {
     }
 }
 
-/* Animación flotante suave (Sprezzatura) */
+/* Animación flotante suave */
 @keyframes subtle-float {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-5px); }
     100% { transform: translateY(0px); }
 }
-.kawaii-container {
-    animation: subtle-float 5s ease-in-out infinite;
-}
+
