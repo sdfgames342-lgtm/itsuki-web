@@ -29,10 +29,10 @@ const ui = {
             window.location.href = "https://t.me/ItsukiNakanoUserBot";
             return;
         }
-        // Estado de carga honesto (Integrità)
+        // Estado de carga honesto
         out.style.opacity = 0.7;
         out.innerText = `⟐ PROCESANDO ${type.toUpperCase()}... ⟐\n└─ Consultando fuentes del Digesto...`;
-        await new Promise(r => setTimeout(r, 400));
+        await new Promise(r => setTimeout(r, 450));
         
         let list = this.phrases[type];
         if (!list) list = this.phrases.dictamen;
@@ -50,7 +50,7 @@ const ui = {
             } else {
                 clearInterval(interval);
             }
-        }, 18);
+        }, 20);
     },
 
     easterEggAvatar() {
@@ -71,22 +71,23 @@ const ui = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Menú hamburguesa (overlay)
+    // Menú hamburguesa interno (no rompe layout)
     const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navMenu');
+    const buttonsRow = document.getElementById('buttonsRow');
     if (menuToggle) {
         menuToggle.addEventListener('click', (e) => {
             e.stopPropagation();
-            navMenu.classList.toggle('open');
+            buttonsRow.classList.toggle('open');
         });
+        // Cerrar al hacer clic fuera
         document.addEventListener('click', (e) => {
-            if (navMenu.classList.contains('open') && !navMenu.contains(e.target) && e.target !== menuToggle) {
-                navMenu.classList.remove('open');
+            if (buttonsRow.classList.contains('open') && !buttonsRow.contains(e.target) && e.target !== menuToggle) {
+                buttonsRow.classList.remove('open');
             }
         });
     }
 
-    // Botones de acción
+    // Asignar acciones a los botones
     const buttons = document.querySelectorAll('[data-action]');
     buttons.forEach(btn => {
         btn.addEventListener('click', async (e) => {
@@ -95,12 +96,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Avatar easter egg
+    // Easter egg en avatar
     const avatar = document.getElementById('easterAvatar');
     if (avatar) avatar.addEventListener('click', () => ui.easterEggAvatar());
 
     // Fade in inicial
-    const container = document.querySelector('.app-container');
+    const container = document.querySelector('.kawaii-container');
     if (container) {
         container.style.opacity = 0;
         setTimeout(() => {
