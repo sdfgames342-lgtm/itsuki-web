@@ -2,36 +2,55 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Itsuki Mainframe ✨</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Itsuki Mainframe • Dual Core Kawaii/Gótico</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="background-overlay"></div>
+    <div class="dual-bg"></div>
     
-    <main class="kawaii-container">
-        <header class="profile-section">
-            <div class="avatar-wrapper">
-                <div class="status-indicator"></div>
-                <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Itsuki&backgroundColor=ffb7c5" alt="Itsuki Avatar" id="itsuki-img">
+    <div class="app-container">
+        <header class="main-header">
+            <div class="logo-area">
+                <div class="avatar-small" id="easterAvatar">
+                    <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Itsuki&backgroundColor=ffb7c5" alt="Itsuki avatar">
+                </div>
+                <div class="title-box">
+                    <h1>Itsuki Mainframe <span class="badge">v9.0 "Gemina"</span></h1>
+                    <p class="sub">⚖️ Corpus Iuris Civilis • Anima Sana In Corpore Elegante</p>
+                </div>
             </div>
-            <h1 class="glitch-text">Itsuki Mainframe</h1>
-            <p class="subtitle">v8.0 "Cherry Blossom" Protocol</p>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menú">☰</button>
+            <nav class="nav-buttons" id="navMenu">
+                <button class="btn pink" data-action="dictamen">💖 DICTAMEN</button>
+                <button class="btn blue" data-action="auditoria">🌸 AUDITORÍA</button>
+                <button class="btn purple" data-action="status">🍭 STATUS</button>
+                <button class="btn dark" data-action="hablar">🤖 HABLAR</button>
+                <button class="btn spqr" data-action="spqr">⚖️ SPQR</button>
+            </nav>
         </header>
 
-        <section class="display-box">
-            <div id="output">⟐ ESCANEANDO ENTE BIOLÓGICO... ⟐</div>
-        </section>
+        <main class="kawaii-container">
+            <div class="display-box" id="output">
+                ⟐ ESCANEANDO ENTE BIOLÓGICO... ⟐
+            </div>
+        </main>
 
-        <nav class="controls">
-            <button class="btn pink" onclick="ui.interact('dictamen')">💖 DICTAMEN</button>
-            <button class="btn blue" onclick="ui.interact('auditoria')">🌸 AUDITORÍA</button>
-            <button class="btn purple" onclick="ui.interact('status')">🍭 STATUS</button>
-            <button class="btn dark" onclick="ui.openBot()">🤖 HABLAR</button>
-        </nav>
-    </main>
+        <footer class="footer-renaissance">
+            <div class="cultural-hints">
+                <span class="tooltip" data-tip="¡Hakuna Matata!">🦁</span>
+                <span class="tooltip" data-tip="Teen Titans Go!">🦹</span>
+                <span class="tooltip" data-tip="Bender dice: 'Chupame la pieza'">🤖</span>
+                <span class="tooltip" data-tip="Los Simpson: 'Ay, caramba!'">🍩</span>
+                <span class="tooltip" data-tip="Tan Biónica - 'La melodía de Dios'">🎸</span>
+                <span class="tooltip" data-tip="Argentina ★">🇦🇷</span>
+                <span class="tooltip" data-tip="Brasil ★ Capoeira">🇧🇷</span>
+            </div>
+            <div class="legal-quote">Dura lex, sed lex — <em>Itsuki Auditora</em></div>
+        </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>
