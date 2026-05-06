@@ -10,33 +10,32 @@
 </head>
 <body>
     <div class="dual-bg"></div>
-    
-    <div class="app-container">
-        <header class="main-header">
-            <div class="logo-area">
-                <div class="avatar-small" id="easterAvatar">
-                    <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Itsuki&backgroundColor=ffb7c5" alt="Itsuki avatar">
-                </div>
-                <div class="title-box">
-                    <h1>Itsuki Mainframe <span class="badge">v10.0 "Aurea"</span></h1>
-                    <p class="sub">⚖️ Corpus Iuris Civilis • Proportio Divina</p>
-                </div>
-            </div>
-            <button class="menu-toggle" id="menuToggle" aria-label="Menú">☰</button>
-            <nav class="nav-buttons" id="navMenu">
-                <button class="btn pink" data-action="dictamen">💖 DICTAMEN</button>
-                <button class="btn blue" data-action="auditoria">🌸 AUDITORÍA</button>
-                <button class="btn purple" data-action="status">🍭 STATUS</button>
-                <button class="btn dark" data-action="hablar">🤖 HABLAR</button>
-                <button class="btn spqr" data-action="spqr">⚖️ SPQR</button>
-            </nav>
-        </header>
 
-        <main class="kawaii-container">
-            <div class="display-box" id="output">
-                ⟐ ESCANEANDO ENTE BIOLÓGICO... ⟐
-            </div>
-        </main>
+    <!-- HEADER INDEPENDIENTE -->
+    <header class="top-header">
+        <div class="logo-mini">⚖️ Itsuki</div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menú">☰</button>
+        <nav class="nav-buttons" id="navMenu">
+            <button class="btn pink" data-action="dictamen">💖 DICTAMEN</button>
+            <button class="btn blue" data-action="auditoria">🌸 AUDITORÍA</button>
+            <button class="btn purple" data-action="status">🍭 STATUS</button>
+            <button class="btn dark" data-action="hablar">🤖 HABLAR</button>
+            <button class="btn spqr" data-action="spqr">⚖️ SPQR</button>
+        </nav>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL (SE MANTIENE CENTRADO) -->
+    <div class="app-container">
+        <div class="avatar-wrapper" id="easterAvatar">
+            <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Itsuki&backgroundColor=ffb7c5" alt="Itsuki avatar">
+            <div class="status-indicator"></div>
+        </div>
+        <h1 class="glitch-text">Itsuki Mainframe</h1>
+        <p class="subtitle">v10.0 "Aurea" • Corpus Iuris Civilis</p>
+
+        <div class="display-box" id="output">
+            ⟐ ESCANEANDO ENTE BIOLÓGICO... ⟐
+        </div>
 
         <footer class="footer-renaissance">
             <div class="cultural-hints">
