@@ -2,17 +2,37 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Itsuki Mainframe - Info</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itsuki Mainframe ✨</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app">
-        <h1>⟐ ITSUKI PROTOCOL ⟐</h1>
-        <p>Estado: Desplegada en GitHub Pages</p>
-        <div class="kawaii-box">
-            <p>Escaneando ente biológico...</p>
-        </div>
-    </div>
+    <div class="background-overlay"></div>
+    
+    <main class="kawaii-container">
+        <header class="profile-section">
+            <div class="avatar-wrapper">
+                <div class="status-indicator"></div>
+                <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Itsuki&backgroundColor=ffb7c5" alt="Itsuki Avatar" id="itsuki-img">
+            </div>
+            <h1 class="glitch-text">Itsuki Mainframe</h1>
+            <p class="subtitle">v8.0 "Cherry Blossom" Protocol</p>
+        </header>
+
+        <section class="display-box">
+            <div id="output">⟐ ESCANEANDO ENTE BIOLÓGICO... ⟐</div>
+        </section>
+
+        <nav class="controls">
+            <button class="btn pink" onclick="ui.interact('dictamen')">💖 DICTAMEN</button>
+            <button class="btn blue" onclick="ui.interact('auditoria')">🌸 AUDITORÍA</button>
+            <button class="btn purple" onclick="ui.interact('status')">🍭 STATUS</button>
+            <button class="btn dark" onclick="ui.openBot()">🤖 HABLAR</button>
+        </nav>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
-
