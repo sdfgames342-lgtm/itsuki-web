@@ -27,7 +27,7 @@ const ui = {
         const out = document.getElementById('output');
         let list = this.phrases[type];
         if (type === 'hablar') {
-            window.location.href = "https://t.me/TheGitTogetherBot";
+            window.location.href = "https://t.me/ItsukiNakanoUserBot";
             return;
         }
         if (!list) list = this.phrases.dictamen;
