@@ -1,6 +1,6 @@
 :root {
     --pink-main: #FFB7C5;
-    --glass: rgba(15, 12, 14, 0.9);
+    --bg-glass: rgba(15, 12, 14, 0.85);
     --font-serif: 'Playfair Display', serif;
     --font-mono: 'JetBrains Mono', monospace;
 }
@@ -9,9 +9,13 @@
 
 body {
     font-family: var(--font-mono);
-    color: #f0e6e8;
-    background: #0a0809;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
+    padding: 10px;
+    background: #0f0c0e;
 }
 
 .dual-bg {
@@ -20,152 +24,153 @@ body {
     background-image: url('Page-img-zmj6P.jpg');
     background-size: cover;
     background-position: center;
-    filter: brightness(0.4);
     z-index: -1;
+    opacity: 0.4;
 }
 
-/* Shell - El contenedor maestro */
-.app-shell {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 1.5rem;
-}
-
-/* HEADER - Bloque superior */
-.global-header {
-    background: var(--glass);
+/* Contenedor central robusto */
+.main-wrapper {
+    width: 100%;
+    max-width: 600px;
+    background: var(--bg-glass);
     border: 1px solid rgba(255, 183, 197, 0.2);
-    border-radius: 15px 15px 5px 5px;
-    padding: 1.5rem;
-    margin-bottom: 0.5rem;
+    border-radius: 12px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
 }
 
-.brand-section {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+/* Header */
+.app-header {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.avatar-wrapper {
+.avatar-container {
     position: relative;
-    width: 65px;
-    height: 65px;
+    width: 80px;
+    margin: 0 auto 10px;
+    cursor: pointer;
 }
-.avatar-wrapper img { width: 100%; border-radius: 50%; border: 2px solid var(--pink-main); }
+.avatar-container img {
+    width: 100%;
+    border-radius: 50%;
+    border: 2px solid var(--pink-main);
+}
 .status-led {
     position: absolute;
-    bottom: 2px;
-    right: 2px;
-    width: 12px;
-    height: 12px;
+    bottom: 5px;
+    right: 5px;
+    width: 14px;
+    height: 14px;
     background: #0f0;
     border-radius: 50%;
-    box-shadow: 0 0 10px #0f0;
+    box-shadow: 0 0 8px #0f0;
     border: 2px solid #000;
 }
 
-.serif-title {
+.title {
     font-family: var(--font-serif);
-    font-size: 1.6rem;
     font-style: italic;
     color: var(--pink-main);
+    font-size: 1.8rem;
+    margin-bottom: 5px;
 }
-.mono-tag { font-size: 0.65rem; opacity: 0.7; letter-spacing: 1px; }
+.subtitle {
+    font-size: 0.7rem;
+    color: #aaa;
+    margin-bottom: 20px;
+}
 
-/* NAV - Barra de botones */
-.nav-bar { width: 100%; }
-.nav-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+/* Botones */
+.nav-buttons { width: 100%; }
+.buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 8px;
 }
-
 .btn {
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
+    padding: 8px 12px;
     font-family: var(--font-mono);
     font-size: 0.7rem;
     font-weight: 600;
-    cursor: pointer;
-    background: rgba(255,255,255,0.05);
+    border: none;
+    border-radius: 6px;
     color: white;
+    cursor: pointer;
     transition: 0.2s;
 }
-.btn:hover { background: rgba(255,255,255,0.15); }
-.pink { background: #ff9eb0 !important; color: #1e1a1d; }
-.spqr { background: #b8860b !important; }
+.btn:active { transform: scale(0.95); }
+.pink { background: #ff9eb0; color: #000; }
+.blue { background: #7acbe6; color: #000; }
+.purple { background: #bc8cf0; color: #000; }
+.dark { background: #2b1e24; }
+.spqr { background: #b8860b; }
 
-/* MAIN CANVAS - Donde vive el output */
-.content-canvas {
-    flex-grow: 1;
-    background: var(--glass);
-    border: 1px solid rgba(255, 183, 197, 0.1);
-    border-radius: 5px 5px 15px 15px;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.hamburger {
+    display: none;
+    width: 100%;
+    padding: 10px;
+    background: var(--pink-main);
+    color: #000;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    margin-bottom: 10px;
 }
 
-/* LEDGER SYSTEM - El fix de las líneas */
-.ledger-container { width: 100%; }
+/* Ledger / Consola */
+.ledger-box {
+    margin-top: 15px;
+}
 
-.ledger-edge-top, .ledger-edge-bottom {
+/* Solución definitiva a las líneas rosas (borde CSS nativo) */
+.ascii-edge {
     display: flex;
     align-items: center;
-    gap: 10px;
     color: var(--pink-main);
-    font-family: var(--font-mono);
     font-size: 0.8rem;
+    gap: 8px;
 }
-
-.filler-line {
+.ascii-line {
     flex-grow: 1;
     height: 1px;
-    background: repeating-linear-gradient(to right, var(--pink-main) 0, var(--pink-main) 5px, transparent 5px, transparent 10px);
+    border-top: 1px dashed var(--pink-main);
     opacity: 0.5;
 }
 
-.ledger-display {
-    padding: 2.5rem 1rem;
-    margin: 10px 0;
-    background: rgba(0,0,0,0.4);
-    border-left: 2px solid var(--pink-main);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    text-align: center;
-    min-height: 120px;
+/* Solución definitiva al texto desfasado (centrado absoluto) */
+.ledger-content {
+    background: rgba(0, 0, 0, 0.6);
+    min-height: 100px;
+    padding: 20px;
+    margin: 5px 0;
+    border-left: 3px solid var(--pink-main);
+    color: #f0e6e8;
+    font-size: 0.9rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     white-space: pre-wrap;
+    line-height: 1.5;
 }
 
-/* MOBILE FIXES */
-.hamburger { display: none; }
-
-@media (max-width: 600px) {
-    .app-shell { padding: 0.5rem; }
-    .global-header { padding: 1rem; }
-    .brand-section { flex-direction: column; text-align: center; }
-    .nav-grid { display: none; grid-template-columns: 1fr; }
-    .nav-grid.open { display: grid; }
-    .hamburger {
-        display: block;
-        width: 100%;
-        padding: 12px;
-        background: var(--pink-main);
-        border: none;
-        font-family: var(--font-mono);
-        font-weight: bold;
-        border-radius: 5px;
-    }
-    .ledger-display { font-size: 0.85rem; padding: 1.5rem 0.5rem; }
-    .ledger-edge-top .label { font-size: 0.7rem; }
+/* Footer */
+.app-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+.icons {
+    font-size: 1.2rem;
+    letter-spacing: 15px;
 }
 
+/* Mobile */
+@media (max-width: 500px) {
+    .title { font-size: 1.5rem; }
+    .buttons-container { display: none; flex-direction: column; }
+    .buttons-container.open { display: flex; }
+    .hamburger { display: block; }
+    .ledger-content { padding: 15px 10px; font-size: 0.8rem; }
+}

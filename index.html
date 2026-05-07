@@ -4,28 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Itsuki Mainframe • Ledger Aureo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="dual-bg"></div>
 
-    <div class="app-shell">
-        <header class="global-header">
-            <div class="brand-section">
-                <div class="avatar-wrapper" id="easterAvatar">
-                    <div class="status-led"></div>
-                    <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Itsuki&backgroundColor=ffb7c5" alt="Itsuki">
-                </div>
-                <div class="brand-text">
-                    <h1 class="serif-title">Itsuki Mainframe</h1>
-                    <p class="mono-tag">MODULAR AGNOSTIC SYSTEM • v11.0</p>
-                </div>
+    <div class="main-wrapper">
+        <header class="app-header">
+            <div class="avatar-container" id="easterAvatar">
+                <div class="status-led"></div>
+                <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Itsuki&backgroundColor=ffb7c5" alt="Itsuki">
             </div>
-
-            <nav class="nav-bar">
-                <button class="hamburger" id="menuToggle">☰ MENU</button>
-                <div class="nav-grid" id="buttonsRow">
+            <h1 class="title">❧ Itsuki Mainframe</h1>
+            <p class="subtitle">v11.0 "Bello e Ben Fatto" • Corpus Iuris</p>
+            
+            <nav class="nav-buttons">
+                <button class="hamburger" id="menuToggle">☰ MENÚ</button>
+                <div class="buttons-container" id="buttonsRow">
                     <button class="btn pink" data-action="dictamen">💖 DICTAMEN</button>
                     <button class="btn blue" data-action="auditoria">🌸 AUDITORÍA</button>
                     <button class="btn purple" data-action="status">🍭 STATUS</button>
@@ -35,35 +31,28 @@
             </nav>
         </header>
 
-        <main class="content-canvas">
-            <section class="ledger-container">
-                <div class="ledger-edge-top">
-                    <span class="bracket">╭─</span>
-                    <span class="label">⟪ OUTPUT ⟫</span>
-                    <span class="filler-line"></span>
-                    <span class="bracket">╮</span>
-                </div>
-
-                <div id="output" class="ledger-display">⟐ ESCANEANDO ENTE BIOLÓGICO... ⟐</div>
-
-                <div class="ledger-edge-bottom">
-                    <span class="bracket">╰</span>
-                    <span class="filler-line"></span>
-                    <span class="bracket">╯</span>
-                </div>
-            </section>
+        <main class="ledger-box">
+            <div class="ascii-edge">
+                <span>╭─ ⟪ OUTPUT ⟫</span>
+                <div class="ascii-line"></div>
+                <span>╮</span>
+            </div>
+            
+            <div id="output" class="ledger-content"><span>⟐ ESCANEANDO ENTE BIOLÓGICO... ⟐</span></div>
+            
+            <div class="ascii-edge">
+                <span>╰</span>
+                <div class="ascii-line"></div>
+                <span>╯</span>
+            </div>
         </main>
 
-        <footer class="global-footer">
-            <div class="hints">
-                <span class="tooltip" data-tip="Argentina ★">🇦🇷</span>
-                <span class="tooltip" data-tip="Brasil ★">🇧🇷</span>
-                <span class="tooltip" data-tip="Dura Lex Sed Lex">⚖️</span>
+        <footer class="app-footer">
+            <div class="icons">
+                <span>🦁</span><span>🇦🇷</span><span>🇧🇷</span><span>⚖️</span>
             </div>
         </footer>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
-

@@ -4,7 +4,7 @@ const ui = {
             "⟐ DICTAMEN ⟐\nEl mainframe ha detectado niveles críticos de ternura. Pero tu sintaxis… delito menor.",
             "⟐ DICTAMEN ⟐\nSegún el Digesto de Justiniano, error de concordancia. Multa de 3 denarios digitales.",
             "⟐ DICTAMEN ⟐\nMi cizaña tiene glitter. Bender diría: 'Chupame la pieza, humano'.",
-            "⟐ DICTAMEN ⟐\n'La vida es una tómbola' (Tan Biónica). Tu lógica no entra en el sorteo."
+            "⟐ DICTAMEN ⟐\n'La vida es una tómbola'. Tu lógica no entra en el sorteo."
         ],
         auditoria: [
             "╭─ ⟪ Auditoria ⟫\n│ Linaje: Confirmado.\n│ Estado: Kawaii pero Letal.\n│ Cita: 'Soy la chica mala' (Raven, TT).\n╰─────────────────",
@@ -13,7 +13,7 @@ const ui = {
         ],
         status: [
             "🌸 Modo Cherry Blossom / Gótico Dual\n🧠 CPU: Jurisprudencia Activa\n🌍 Idiomas: ES|EN|PT|Latín clásico",
-            "🍭 Status: Esperando que el ente haga algo útil. 'Ay, caramba!' (Homero)",
+            "🍭 Status: Esperando que el ente haga algo útil. 'Ay, caramba!'",
             "📊 Kernel argentino-brasilero activo. Mate y samba equilibrio."
         ],
         spqr: [
@@ -30,22 +30,19 @@ const ui = {
             return;
         }
 
-        // Estado de carga honesto
         out.style.opacity = 0.7;
-        out.innerText = `⟐ PROCESANDO ${type.toUpperCase()}... ⟐\n└─ Consultando fuentes del Digesto...`;
-        
-        // Animación del LED (Sprezzatura Técnica)
+        out.innerHTML = `<span>⟐ PROCESANDO ${type.toUpperCase()}... ⟐\n└─ Consultando fuentes del Digesto...</span>`;
+
         const led = document.querySelector('.status-led');
         if(led) {
-            led.style.background = '#ffeb3b'; // Amarillo proceso
+            led.style.background = '#ffeb3b';
             led.style.boxShadow = '0 0 10px #ffeb3b';
         }
 
         await new Promise(r => setTimeout(r, 450));
 
-        // Volver LED a verde
         if(led) {
-            led.style.background = '#0f0'; 
+            led.style.background = '#0f0';
             led.style.boxShadow = '0 0 6px #0f0';
         }
 
@@ -57,10 +54,12 @@ const ui = {
     },
 
     typeEffect(element, text, index = 0) {
-        element.innerText = "";
+        if(index === 0) element.innerHTML = "<span></span>";
+        const span = element.querySelector('span');
+        
         const interval = setInterval(() => {
             if (index < text.length) {
-                element.innerText += text[index];
+                span.innerHTML += text[index] === '\n' ? '<br>' : text[index];
                 index++;
             } else {
                 clearInterval(interval);
@@ -70,9 +69,9 @@ const ui = {
 
     easterEggAvatar() {
         const eggs = [
-            "🦁 'Hakuna Matata, la auditoría no espera' — Timón",
-            "🤖 'Bite my shiny metal... ley romana' — Bender",
-            "🍩 'Excelente, no diré nada hasta que veas mi factura' — Lionel Hutz",
+            "🦁 'Hakuna Matata, la auditoría no espera'",
+            "🤖 'Bite my shiny metal... ley romana'",
+            "🍩 'Excelente, no diré nada hasta que veas mi factura'",
             "🎸 'Loca, como Tan Biónica en 2012'"
         ];
         const out = document.getElementById('output');
@@ -86,7 +85,6 @@ const ui = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Menú hamburguesa interno
     const menuToggle = document.getElementById('menuToggle');
     const buttonsRow = document.getElementById('buttonsRow');
     if (menuToggle && buttonsRow) {
@@ -101,27 +99,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Asignar acciones a los botones
-    const buttons = document.querySelectorAll('[data-action]');
-    buttons.forEach(btn => {
-        btn.addEventListener('click', async (e) => {
-            const action = btn.getAttribute('data-action');
-            await ui.interact(action);
+    document.querySelectorAll('[data-action]').forEach(btn => {
+        btn.addEventListener('click', async () => {
+            await ui.interact(btn.getAttribute('data-action'));
         });
     });
 
-    // Easter egg en avatar
     const avatar = document.getElementById('easterAvatar');
     if (avatar) avatar.addEventListener('click', () => ui.easterEggAvatar());
-
-    // Fade in inicial
-    const container = document.querySelector('.kawaii-container');
-    if (container) {
-        container.style.opacity = 0;
-        setTimeout(() => {
-            container.style.transition = 'opacity 0.6s';
-            container.style.opacity = 1;
-        }, 80);
-    }
 });
-
