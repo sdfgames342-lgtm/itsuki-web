@@ -1,57 +1,121 @@
 const ui = {
     phrases: {
-        dictamen: ["⟐ DICTAMEN ⟐\nEl mainframe ha detectado niveles críticos de ternura. Pero tu sintaxis… delito menor.", "⟐ DICTAMEN ⟐\nMulta de 3 denarios digitales."],
-        auditoria: ["╭─ ⟪ Auditoria ⟫\n│ Linaje: Confirmado.\n│ Estado: Kawaii pero Letal.\n╰─────────────────"],
-        status: ["🌸 Modo Cherry Blossom Activo\n🧠 CPU: Jurisprudencia Activa"],
-        spqr: ["⚖️ SPQR • EX NIHILO NIHIL FIT."]
+        dictamen: [
+            "⟐ DICTAMEN ⟐\nEl mainframe ha detectado niveles críticos de ternura. Pero tu sintaxis… delito menor.",
+            "⟐ DICTAMEN ⟐\nSegún el Digesto de Justiniano, error de concordancia. Multa de 3 denarios digitales.",
+            "⟐ DICTAMEN ⟐\nMi cizaña tiene glitter. Bender diría: 'Chupame la pieza, humano'.",
+            "⟐ DICTAMEN ⟐\n'La vida es una tómbola' (Tan Biónica). Tu lógica no entra en el sorteo."
+        ],
+        auditoria: [
+            "╭─ ⟪ Auditoria ⟫\n│ Linaje: Confirmado.\n│ Estado: Kawaii pero Letal.\n│ Cita: 'Soy la chica mala' (Raven, TT).\n╰─────────────────",
+            "╭─ ⟪ Auditoria ⟫\n│ Entropía gramatical.\n│ Estudia como Ned Flanders o serás depurado.\n╰─────────────────",
+            "╭─ ⟪ Auditoria ⟫\n│ Viste 'El Rey León' +3 veces. Hakuna Matata no es cifrado.\n╰─────────────────"
+        ],
+        status: [
+            "🌸 Modo Cherry Blossom / Gótico Dual\n🧠 CPU: Jurisprudencia Activa\n🌍 Idiomas: ES|EN|PT|Latín clásico",
+            "🍭 Status: Esperando que el ente haga algo útil. 'Ay, caramba!' (Homero)",
+            "📊 Kernel argentino-brasilero activo. Mate y samba equilibrio."
+        ],
+        spqr: [
+            "⚖️ SPQR • EX NIHILO NIHIL FIT.\nIgnorar el latín es reo de aesthetica negligencia.",
+            "🏛️ D. I. 1.1.1 'Honeste vivere, alterum non laedere, suum cuique tribuere'.",
+            "📜 Senatus consultum: 'Bello e Ben Fatto' obligatorio bajo pena de damnatio memoriae."
+        ]
     },
 
     async interact(type) {
         const out = document.getElementById('output');
+        // Cerrar menú móvil al hacer clic
         const mobileMenu = document.getElementById('mobileMenu');
-        if (mobileMenu) mobileMenu.classList.add('hidden'); // Cerrar al clickear
+        if (mobileMenu && mobileMenu.classList.contains('show')) {
+            mobileMenu.classList.remove('show');
+        }
         
         if (type === 'hablar') {
             window.location.href = "https://t.me/ItsukiNakanoUserBot";
             return;
         }
-
-        out.style.opacity = 0.5;
-        out.innerHTML = `<span>⟐ PROCESANDO ${type.toUpperCase()}...</span>`;
-
-        await new Promise(r => setTimeout(r, 400));
-
-        let list = this.phrases[type] || this.phrases.dictamen;
+        
+        // Estado de carga honesto (Integrità)
+        out.style.opacity = 0.7;
+        out.innerText = `⟐ PROCESANDO ${type.toUpperCase()}... ⟐\n└─ Consultando fuentes del Digesto...`;
+        await new Promise(r => setTimeout(r, 450));
+        
+        let list = this.phrases[type];
+        if (!list) list = this.phrases.dictamen;
         const randomPhrase = list[Math.floor(Math.random() * list.length)];
         out.style.opacity = 1;
         this.typeEffect(out, randomPhrase);
     },
-
+    
     typeEffect(element, text, index = 0) {
-        if(index === 0) element.innerHTML = "<span></span>";
-        const span = element.querySelector('span');
+        element.innerText = "";
         const interval = setInterval(() => {
             if (index < text.length) {
-                span.innerHTML += text[index] === '\n' ? '<br>' : text[index];
+                element.innerText += text[index];
                 index++;
-            } else { clearInterval(interval); }
-        }, 25);
+            } else {
+                clearInterval(interval);
+            }
+        }, 20);
+    },
+
+    easterEggAvatar() {
+        const eggs = [
+            "🦁 'Hakuna Matata, la auditoría no espera' — Timón (El Rey León)",
+            "🤖 'Bite my shiny metal... ley romana' — Bender (Futurama)",
+            "🍩 'Excelente, no diré nada hasta que veas mi factura' — Lionel Hutz (Los Simpsons)",
+            "🎸 'Loca, como Tan Biónica en 2012'"
+        ];
+        const out = document.getElementById('output');
+        const randomEgg = eggs[Math.floor(Math.random() * eggs.length)];
+        out.style.opacity = 0;
+        setTimeout(() => {
+            out.style.opacity = 1;
+            this.typeEffect(out, `🥚 EASTER EGG → ${randomEgg}`);
+        }, 100);
     }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Menu Toggle
-    const menuBtn = document.getElementById('menuToggle');
+    // Menú hamburguesa: toggle del menú móvil
+    const menuToggle = document.getElementById('menuToggle');
     const mobileMenu = document.getElementById('mobileMenu');
-    menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    if (menuToggle) {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenu.classList.toggle('show');
+        });
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (mobileMenu.classList.contains('show') && 
+                !mobileMenu.contains(e.target) && 
+                e.target !== menuToggle) {
+                mobileMenu.classList.remove('show');
+            }
+        });
+    }
 
-    // Acciones
-    document.querySelectorAll('[data-action]').forEach(btn => {
-        btn.addEventListener('click', () => ui.interact(btn.getAttribute('data-action')));
+    // Botones de acción (tanto del escritorio como del móvil)
+    const buttons = document.querySelectorAll('[data-action]');
+    buttons.forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+            const action = btn.getAttribute('data-action');
+            await ui.interact(action);
+        });
     });
 
-    // Easter Egg
-    document.getElementById('easterAvatar')?.addEventListener('click', () => {
-        ui.typeEffect(document.getElementById('output'), "🦁 'Hakuna Matata, la auditoría no espera'");
-    });
+    // Easter egg en el avatar (logo-area completo)
+    const avatarArea = document.getElementById('easterAvatar');
+    if (avatarArea) avatarArea.addEventListener('click', () => ui.easterEggAvatar());
+
+    // Fade in inicial del main
+    const ledger = document.querySelector('.ledger-card');
+    if (ledger) {
+        ledger.style.opacity = 0;
+        setTimeout(() => {
+            ledger.style.transition = 'opacity 0.6s';
+            ledger.style.opacity = 1;
+        }, 100);
+    }
 });
