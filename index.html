@@ -4,55 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Itsuki Mainframe • Ledger Aureo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="bg-gray-950 text-white min-h-screen">
     <div class="dual-bg"></div>
 
-    <div class="main-wrapper">
-        <header class="app-header">
-            <div class="avatar-container" id="easterAvatar">
-                <div class="status-led"></div>
-                <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Itsuki&backgroundColor=ffb7c5" alt="Itsuki">
-            </div>
-            <h1 class="title">❧ Itsuki Mainframe</h1>
-            <p class="subtitle">v11.0 "Bello e Ben Fatto" • Corpus Iuris</p>
-            
-            <nav class="nav-buttons">
-                <button class="hamburger" id="menuToggle">☰ MENÚ</button>
-                <div class="buttons-container" id="buttonsRow">
-                    <button class="btn pink" data-action="dictamen">💖 DICTAMEN</button>
-                    <button class="btn blue" data-action="auditoria">🌸 AUDITORÍA</button>
-                    <button class="btn purple" data-action="status">🍭 STATUS</button>
-                    <button class="btn dark" data-action="hablar">🤖 HABLAR</button>
-                    <button class="btn spqr" data-action="spqr">⚖️ SPQR</button>
+    <header class="bg-black/80 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-pink-200/20">
+        <div class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3" id="easterAvatar">
+                <div class="relative w-10 h-10">
+                    <div class="status-led absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-black"></div>
+                    <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Itsuki&backgroundColor=ffb7c5" class="rounded-full border border-pink-300">
                 </div>
+                <h1 class="text-xl font-bold serif-title hidden sm:block">Itsuki Mainframe</h1>
+            </div>
+            
+            <nav class="hidden lg:flex space-x-2">
+                <button class="btn-nav" data-action="dictamen">💖 DICTAMEN</button>
+                <button class="btn-nav" data-action="auditoria">🌸 AUDITORÍA</button>
+                <button class="btn-nav" data-action="status">🍭 STATUS</button>
+                <button class="btn-nav" data-action="spqr">⚖️ SPQR</button>
             </nav>
-        </header>
+            
+            <button class="bg-pink-400 text-black px-4 py-2 rounded-lg font-bold hover:bg-pink-300 transition text-sm" data-action="hablar">
+                🤖 HABLAR
+            </button>
 
-        <main class="ledger-box">
-            <div class="ascii-edge">
+            <button id="menuToggle" class="lg:hidden text-2xl text-pink-300 p-2">
+                ☰
+            </button>
+        </div>
+
+        <div id="mobileMenu" class="hidden lg:hidden bg-black/90 border-t border-pink-200/10 p-4 space-y-2">
+            <button class="block w-full text-left p-3 hover:bg-pink-900/20 rounded" data-action="dictamen">💖 DICTAMEN</button>
+            <button class="block w-full text-left p-3 hover:bg-pink-900/20 rounded" data-action="auditoria">🌸 AUDITORÍA</button>
+            <button class="block w-full text-left p-3 hover:bg-pink-900/20 rounded" data-action="status">🍭 STATUS</button>
+            <button class="block w-full text-left p-3 hover:bg-pink-900/20 rounded" data-action="spqr">⚖️ SPQR</button>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <section class="ledger-box">
+            <div class="ascii-edge flex items-center gap-4 text-pink-300 text-xs mb-2">
                 <span>╭─ ⟪ OUTPUT ⟫</span>
-                <div class="ascii-line"></div>
+                <div class="flex-grow border-t border-dashed border-pink-300/50"></div>
                 <span>╮</span>
             </div>
             
-            <div id="output" class="ledger-content"><span>⟐ ESCANEANDO ENTE BIOLÓGICO... ⟐</span></div>
+            <div id="output" class="ledger-content bg-black/60 p-8 rounded border-l-4 border-pink-400 min-h-[200px] flex items-center justify-center text-center text-lg md:text-xl font-mono leading-relaxed">
+                <span>⟐ ESCANEANDO ENTE BIOLÓGICO... ⟐</span>
+            </div>
             
-            <div class="ascii-edge">
+            <div class="ascii-edge flex items-center gap-4 text-pink-300 text-xs mt-2">
                 <span>╰</span>
-                <div class="ascii-line"></div>
+                <div class="flex-grow border-t border-dashed border-pink-300/50"></div>
                 <span>╯</span>
             </div>
-        </main>
+        </section>
+    </main>
 
-        <footer class="app-footer">
-            <div class="icons">
-                <span>🦁</span><span>🇦🇷</span><span>🇧🇷</span><span>⚖️</span>
-            </div>
-        </footer>
-    </div>
+    <footer class="mt-auto py-8 text-center text-xs text-gray-500 font-mono">
+        <p>&copy; 2026 Itsuki Auditora • Dura lex, sed lex • 🇦🇷 🇧🇷</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

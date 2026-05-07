@@ -1,21 +1,16 @@
 :root {
     --pink-main: #FFB7C5;
-    --bg-glass: rgba(15, 12, 14, 0.85);
     --font-serif: 'Playfair Display', serif;
     --font-mono: 'JetBrains Mono', monospace;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
 body {
     font-family: var(--font-mono);
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 10px;
-    background: #0f0c0e;
+}
+
+.serif-title {
+    font-family: var(--font-serif);
+    color: var(--pink-main);
 }
 
 .dual-bg {
@@ -25,152 +20,28 @@ body {
     background-size: cover;
     background-position: center;
     z-index: -1;
-    opacity: 0.4;
+    opacity: 0.3;
 }
 
-/* Contenedor central robusto */
-.main-wrapper {
-    width: 100%;
-    max-width: 600px;
-    background: var(--bg-glass);
-    border: 1px solid rgba(255, 183, 197, 0.2);
-    border-radius: 12px;
-    padding: 20px;
-    backdrop-filter: blur(10px);
-}
-
-/* Header */
-.app-header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.avatar-container {
-    position: relative;
-    width: 80px;
-    margin: 0 auto 10px;
-    cursor: pointer;
-}
-.avatar-container img {
-    width: 100%;
-    border-radius: 50%;
-    border: 2px solid var(--pink-main);
-}
-.status-led {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    width: 14px;
-    height: 14px;
-    background: #0f0;
-    border-radius: 50%;
-    box-shadow: 0 0 8px #0f0;
-    border: 2px solid #000;
-}
-
-.title {
-    font-family: var(--font-serif);
-    font-style: italic;
-    color: var(--pink-main);
-    font-size: 1.8rem;
-    margin-bottom: 5px;
-}
-.subtitle {
-    font-size: 0.7rem;
-    color: #aaa;
-    margin-bottom: 20px;
-}
-
-/* Botones */
-.nav-buttons { width: 100%; }
-.buttons-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-}
-.btn {
-    padding: 8px 12px;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
+.btn-nav {
+    font-size: 0.75rem;
     font-weight: 600;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    cursor: pointer;
-    transition: 0.2s;
-}
-.btn:active { transform: scale(0.95); }
-.pink { background: #ff9eb0; color: #000; }
-.blue { background: #7acbe6; color: #000; }
-.purple { background: #bc8cf0; color: #000; }
-.dark { background: #2b1e24; }
-.spqr { background: #b8860b; }
-
-.hamburger {
-    display: none;
-    width: 100%;
-    padding: 10px;
-    background: var(--pink-main);
-    color: #000;
-    font-weight: bold;
-    border: none;
-    border-radius: 6px;
-    margin-bottom: 10px;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+    color: #fce7f3;
 }
 
-/* Ledger / Consola */
-.ledger-box {
-    margin-top: 15px;
-}
-
-/* Solución definitiva a las líneas rosas (borde CSS nativo) */
-.ascii-edge {
-    display: flex;
-    align-items: center;
+.btn-nav:hover {
+    background: rgba(251, 113, 133, 0.1);
     color: var(--pink-main);
-    font-size: 0.8rem;
-    gap: 8px;
-}
-.ascii-line {
-    flex-grow: 1;
-    height: 1px;
-    border-top: 1px dashed var(--pink-main);
-    opacity: 0.5;
 }
 
-/* Solución definitiva al texto desfasado (centrado absoluto) */
+.status-led {
+    box-shadow: 0 0 8px #22c55e;
+}
+
 .ledger-content {
-    background: rgba(0, 0, 0, 0.6);
-    min-height: 100px;
-    padding: 20px;
-    margin: 5px 0;
-    border-left: 3px solid var(--pink-main);
-    color: #f0e6e8;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    backdrop-filter: blur(5px);
     white-space: pre-wrap;
-    line-height: 1.5;
-}
-
-/* Footer */
-.app-footer {
-    text-align: center;
-    margin-top: 20px;
-}
-.icons {
-    font-size: 1.2rem;
-    letter-spacing: 15px;
-}
-
-/* Mobile */
-@media (max-width: 500px) {
-    .title { font-size: 1.5rem; }
-    .buttons-container { display: none; flex-direction: column; }
-    .buttons-container.open { display: flex; }
-    .hamburger { display: block; }
-    .ledger-content { padding: 15px 10px; font-size: 0.8rem; }
 }
