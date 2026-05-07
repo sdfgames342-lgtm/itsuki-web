@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Itsuki Mainframe • Ledger Aureo</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -12,42 +12,50 @@
 
     <main class="kawaii-container">
         <header class="ledger-header">
-            <div class="avatar-wrapper" id="easterAvatar">
-                <div class="status-led"></div>
-                <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Itsuki&backgroundColor=ffb7c5" alt="Itsuki">
+            <div class="header-top">
+                <div class="avatar-wrapper" id="easterAvatar">
+                    <div class="status-led"></div>
+                    <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Itsuki&backgroundColor=ffb7c5" alt="Itsuki">
+                </div>
+                <div class="title-group">
+                    <h1 class="serif-title">❧ Itsuki Mainframe</h1>
+                    <p class="mono-sub">v11.0 "Bello e Ben Fatto" • Corpus Iuris</p>
+                </div>
             </div>
-            <h1 class="serif-title">❧ Itsuki Mainframe</h1>
-            <p class="mono-sub">v11.0 "Bello e Ben Fatto" • Corpus Iuris</p>
+
+            <nav class="button-panel">
+                <button class="hamburger" id="menuToggle">☰</button>
+                <div class="buttons-row" id="buttonsRow">
+                    <button class="btn pink" data-action="dictamen">💖 DICTAMEN</button>
+                    <button class="btn blue" data-action="auditoria">🌸 AUDITORÍA</button>
+                    <button class="btn purple" data-action="status">🍭 STATUS</button>
+                    <button class="btn dark" data-action="hablar">🤖 HABLAR</button>
+                    <button class="btn spqr" data-action="spqr">⚖️ SPQR</button>
+                </div>
+            </nav>
         </header>
 
-        <div class="button-panel">
-            <button class="hamburger" id="menuToggle" aria-label="Menú">☰</button>
-            <div class="buttons-row" id="buttonsRow">
-                <button class="btn pink" data-action="dictamen">💖 DICTAMEN</button>
-                <button class="btn blue" data-action="auditoria">🌸 AUDITORÍA</button>
-                <button class="btn purple" data-action="status">🍭 STATUS</button>
-                <button class="btn dark" data-action="hablar">🤖 HABLAR</button>
-                <button class="btn spqr" data-action="spqr">⚖️ SPQR</button>
+        <section class="ledger-box">
+            <div class="ledger-border-top">
+                <span>╭─ ⟪ OUTPUT ⟫</span>
+                <span class="line-filler"></span>
+                <span>╮</span>
             </div>
-        </div>
-
-        <div class="ledger-box">
-            <div class="ledger-border-top">╭─ ⟪ OUTPUT ⟫ ──────────────────────────────────╮</div>
-            <div id="output" class="mono-output">
-                ⟐ ESCANEANDO ENTE BIOLÓGICO... ⟐
+            
+            <div id="output" class="mono-output">⟐ ESCANEANDO ENTE BIOLÓGICO... ⟐</div>
+            
+            <div class="ledger-border-bottom">
+                <span>╰</span>
+                <span class="line-filler"></span>
+                <span>╯</span>
             </div>
-            <div class="ledger-border-bottom">╰───────────────────────────────────────────────╯</div>
-        </div>
+        </section>
 
         <footer class="footer-ledger">
             <div class="cultural-hints">
                 <span class="tooltip" data-tip="¡Hakuna Matata!">🦁</span>
-                <span class="tooltip" data-tip="Teen Titans Go!">🦹</span>
-                <span class="tooltip" data-tip="Bender dice: 'Chupame la pieza'">🤖</span>
-                <span class="tooltip" data-tip="Los Simpson: 'Ay, caramba!'">🍩</span>
-                <span class="tooltip" data-tip="Tan Biónica - 'La melodía de Dios'">🎸</span>
                 <span class="tooltip" data-tip="Argentina ★">🇦🇷</span>
-                <span class="tooltip" data-tip="Brasil ★ Capoeira">🇧🇷</span>
+                <span class="tooltip" data-tip="Brasil ★">🇧🇷</span>
             </div>
             <div class="legal-quote mono-small">Dura lex, sed lex — <em>Itsuki Auditora</em></div>
         </footer>
