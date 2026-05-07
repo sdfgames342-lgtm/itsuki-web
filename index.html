@@ -10,22 +10,22 @@
 <body>
     <div class="dual-bg"></div>
 
-    <main class="kawaii-container">
-        <header class="ledger-header">
-            <div class="header-top">
+    <div class="app-shell">
+        <header class="global-header">
+            <div class="brand-section">
                 <div class="avatar-wrapper" id="easterAvatar">
                     <div class="status-led"></div>
                     <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Itsuki&backgroundColor=ffb7c5" alt="Itsuki">
                 </div>
-                <div class="title-group">
-                    <h1 class="serif-title">❧ Itsuki Mainframe</h1>
-                    <p class="mono-sub">v11.0 "Bello e Ben Fatto" • Corpus Iuris</p>
+                <div class="brand-text">
+                    <h1 class="serif-title">Itsuki Mainframe</h1>
+                    <p class="mono-tag">MODULAR AGNOSTIC SYSTEM • v11.0</p>
                 </div>
             </div>
 
-            <nav class="button-panel">
-                <button class="hamburger" id="menuToggle">☰</button>
-                <div class="buttons-row" id="buttonsRow">
+            <nav class="nav-bar">
+                <button class="hamburger" id="menuToggle">☰ MENU</button>
+                <div class="nav-grid" id="buttonsRow">
                     <button class="btn pink" data-action="dictamen">💖 DICTAMEN</button>
                     <button class="btn blue" data-action="auditoria">🌸 AUDITORÍA</button>
                     <button class="btn purple" data-action="status">🍭 STATUS</button>
@@ -35,31 +35,33 @@
             </nav>
         </header>
 
-        <section class="ledger-box">
-            <div class="ledger-border-top">
-                <span>╭─ ⟪ OUTPUT ⟫</span>
-                <span class="line-filler"></span>
-                <span>╮</span>
-            </div>
-            
-            <div id="output" class="mono-output">⟐ ESCANEANDO ENTE BIOLÓGICO... ⟐</div>
-            
-            <div class="ledger-border-bottom">
-                <span>╰</span>
-                <span class="line-filler"></span>
-                <span>╯</span>
-            </div>
-        </section>
+        <main class="content-canvas">
+            <section class="ledger-container">
+                <div class="ledger-edge-top">
+                    <span class="bracket">╭─</span>
+                    <span class="label">⟪ OUTPUT ⟫</span>
+                    <span class="filler-line"></span>
+                    <span class="bracket">╮</span>
+                </div>
 
-        <footer class="footer-ledger">
-            <div class="cultural-hints">
-                <span class="tooltip" data-tip="¡Hakuna Matata!">🦁</span>
+                <div id="output" class="ledger-display">⟐ ESCANEANDO ENTE BIOLÓGICO... ⟐</div>
+
+                <div class="ledger-edge-bottom">
+                    <span class="bracket">╰</span>
+                    <span class="filler-line"></span>
+                    <span class="bracket">╯</span>
+                </div>
+            </section>
+        </main>
+
+        <footer class="global-footer">
+            <div class="hints">
                 <span class="tooltip" data-tip="Argentina ★">🇦🇷</span>
                 <span class="tooltip" data-tip="Brasil ★">🇧🇷</span>
+                <span class="tooltip" data-tip="Dura Lex Sed Lex">⚖️</span>
             </div>
-            <div class="legal-quote mono-small">Dura lex, sed lex — <em>Itsuki Auditora</em></div>
         </footer>
-    </main>
+    </div>
 
     <script src="script.js"></script>
 </body>
