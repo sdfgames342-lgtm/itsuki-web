@@ -2,58 +2,82 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Itsuki · Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Itsuki Mainframe • Ledger Aureo</title>
+    <!-- Fuentes: Serif italiana + Mono técnico -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <script type="module" src="app.js"></script>
 </head>
 <body>
-    <header>
-        <h1>❧ Itsuki · Dashboard</h1>
-        <div class="status" id="status">conectando…</div>
+    <div class="dual-bg"></div>
+
+    <!-- HEADER STICKY con menú hamburguesa -->
+    <header class="sticky-header">
+        <div class="header-container">
+            <div class="logo-area" id="easterAvatar">
+                <div class="avatar-mini">
+                    <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Itsuki&backgroundColor=ffb7c5" alt="Itsuki">
+                    <span class="status-led-mini"></span>
+                </div>
+                <h1 class="serif-title">Itsuki Mainframe</h1>
+            </div>
+
+            <!-- Botón hamburguesa (solo móvil) -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Menú">☰</button>
+
+            <!-- Menú de escritorio -->
+            <nav class="desktop-nav">
+                <button class="btn-nav" data-action="dictamen">💖 DICTAMEN</button>
+                <button class="btn-nav" data-action="auditoria">🌸 AUDITORÍA</button>
+                <button class="btn-nav" data-action="status">🍭 STATUS</button>
+                <button class="btn-nav" data-action="spqr">⚖️ SPQR</button>
+                <button class="btn-nav btn-telegram" data-action="hablar">🤖 HABLAR</button>
+            </nav>
+
+            <!-- Menú móvil (overlay, no desplaza contenido) -->
+            <div class="mobile-menu" id="mobileMenu">
+                <button class="btn-mobile" data-action="dictamen">💖 DICTAMEN</button>
+                <button class="btn-mobile" data-action="auditoria">🌸 AUDITORÍA</button>
+                <button class="btn-mobile" data-action="status">🍭 STATUS</button>
+                <button class="btn-mobile" data-action="spqr">⚖️ SPQR</button>
+                <button class="btn-mobile btn-telegram" data-action="hablar">🤖 HABLAR</button>
+            </div>
+        </div>
     </header>
 
-    <main>
-        <section class="kpis" id="kpis">
-            <div class="kpi"><span class="label">Players</span><span class="value" id="kpi-players">–</span></div>
-            <div class="kpi"><span class="label">Wallets</span><span class="value" id="kpi-wallets">–</span></div>
-            <div class="kpi"><span class="label">DAU</span><span class="value" id="kpi-dau">–</span></div>
-            <div class="kpi"><span class="label">WAU</span><span class="value" id="kpi-wau">–</span></div>
-            <div class="kpi"><span class="label">Eventos 24h</span><span class="value" id="kpi-events">–</span></div>
-            <div class="kpi"><span class="label">MRR (XTR)</span><span class="value" id="kpi-mrr">–</span></div>
-        </section>
-
-        <section class="chart-container">
-            <h2>Actividad diaria (30d)</h2>
-            <canvas id="chart-daily"></canvas>
-        </section>
-
-        <section class="chart-container">
-            <h2>Top comandos (7d)</h2>
-            <canvas id="chart-commands"></canvas>
-        </section>
-
-        <section class="table-container">
-            <h2>Top wallets</h2>
-            <table id="table-wallets">
-                <thead><tr><th>#</th><th>User</th><th>Tokens</th><th>Fichas</th></tr></thead>
-                <tbody></tbody>
-            </table>
-        </section>
-
-        <section class="table-container">
-            <h2>Top grupos</h2>
-            <table id="table-groups">
-                <thead><tr><th>#</th><th>Grupo</th><th>Pts</th><th>Nivel</th><th>ITS</th></tr></thead>
-                <tbody></tbody>
-            </table>
-        </section>
-
-        <footer>
-            <span id="last-update">–</span>
-            <button id="refresh">🔄 Actualizar</button>
-        </footer>
+    <!-- MAIN: Contenido central (ledger) -->
+    <main class="main-ledger">
+        <div class="ledger-card">
+            <div class="ledger-border-top">
+                <span>╭─ ⟪ OUTPUT ⟫</span>
+                <div class="ledger-line"></div>
+                <span>╮</span>
+            </div>
+            <div id="output" class="output-mono">
+                ⟐ ESCANEANDO ENTE BIOLÓGICO... ⟐
+            </div>
+            <div class="ledger-border-bottom">
+                <span>╰</span>
+                <div class="ledger-line"></div>
+                <span>╯</span>
+            </div>
+        </div>
     </main>
+
+    <!-- FOOTER: cultural hints y derechos -->
+    <footer class="footer-ledger">
+        <div class="cultural-hints">
+            <span class="tooltip" data-tip="¡Hakuna Matata!">🦁</span>
+            <span class="tooltip" data-tip="Teen Titans Go!">🦹</span>
+            <span class="tooltip" data-tip="Bender dice: 'Chupame la pieza'">🤖</span>
+            <span class="tooltip" data-tip="Los Simpson: 'Ay, caramba!'">🍩</span>
+            <span class="tooltip" data-tip="Tan Biónica - 'La melodía de Dios'">🎸</span>
+            <span class="tooltip" data-tip="Argentina ★">🇦🇷</span>
+            <span class="tooltip" data-tip="Brasil ★ Capoeira">🇧🇷</span>
+        </div>
+        <div class="legal-quote">Dura lex, sed lex — <em>Itsuki Auditora</em> | v11.0 "Aurea"</div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
